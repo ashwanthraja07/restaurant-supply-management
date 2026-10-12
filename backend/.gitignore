@@ -1,0 +1,19 @@
+# Backend Dependencies
+node_modules/
+
+# Environment Variables & Secrets
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+logs/
+npm-debug.log*
+
+# Oracle Instant Client & Binaries
+instantclient*/
+META-INF/
+*.dll
+*.sym
+*.exe
