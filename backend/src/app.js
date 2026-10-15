@@ -7,7 +7,7 @@ const app = express();
 app.use(cors({ origin: process.env.FRONTEND_URL || 'http://localhost:5173' }));
 app.use(express.json());
 
-// Routes
+// ── Existing Routes ──────────────────────────────────────────
 const healthRoutes = require('./routes/health');
 const supplierRoutes = require('./routes/suppliers');
 const restaurantRoutes = require('./routes/restaurants');
@@ -30,7 +30,18 @@ app.use('/api/order-items', orderItemRoutes);
 app.use('/api/reports', reportRoutes);
 app.use('/api/dashboard', dashboardRoutes);
 
-// Error Handling Middleware
+// ── New Auth + Role-Specific Portal Routes ───────────────────
+const authRoutes             = require('./routes/auth');
+const supplierPortalRoutes   = require('./routes/supplierPortal');
+const restaurantPortalRoutes = require('./routes/restaurantPortal');
+const adminPortalRoutes      = require('./routes/adminPortal');
+
+app.use('/api/auth', authRoutes);
+app.use('/api/supplier-portal', supplierPortalRoutes);
+app.use('/api/restaurant-portal', restaurantPortalRoutes);
+app.use('/api/admin-portal', adminPortalRoutes);
+
+// ── Error Handling Middleware ────────────────────────────────
 app.use((err, req, res, next) => {
     console.error(err.stack);
     if (err.message && err.message.includes('ORA-')) {

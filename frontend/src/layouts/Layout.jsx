@@ -12,15 +12,15 @@ const Layout = ({ children }) => {
   const { darkMode, toggleDarkMode } = useTheme();
 
   const navigation = [
-    { name: 'Dashboard', href: '/', icon: LayoutDashboard },
-    { name: 'Suppliers', href: '/suppliers', icon: Users },
-    { name: 'Restaurants', href: '/restaurants', icon: Store },
-    { name: 'Warehouses', href: '/warehouses', icon: Warehouse },
-    { name: 'Products', href: '/products', icon: Package },
-    { name: 'Inventory', href: '/inventory', icon: ClipboardList },
-    { name: 'Purchase Orders', href: '/orders', icon: ShoppingCart },
-    { name: 'Order Items', href: '/order-items', icon: ListOrdered },
-    { name: 'Reports', href: '/reports', icon: BarChart2 },
+    { name: 'Dashboard', href: '/admin', icon: LayoutDashboard },
+    { name: 'Suppliers', href: '/admin/suppliers', icon: Users },
+    { name: 'Restaurants', href: '/admin/restaurants', icon: Store },
+    { name: 'Warehouses', href: '/admin/warehouses', icon: Warehouse },
+    { name: 'Products', href: '/admin/products', icon: Package },
+    { name: 'Inventory', href: '/admin/inventory', icon: ClipboardList },
+    { name: 'Purchase Orders', href: '/admin/orders', icon: ShoppingCart },
+    { name: 'Order Items', href: '/admin/order-items', icon: ListOrdered },
+    { name: 'Reports', href: '/admin/reports', icon: BarChart2 },
   ];
 
   return (
@@ -73,6 +73,13 @@ const Layout = ({ children }) => {
           </h1>
 
           <div className="flex items-center space-x-4">
+            <Link
+              to="/login"
+              className="text-xs px-3 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-medium transition-colors"
+            >
+              Go to Portals / Login
+            </Link>
+
             {/* Dark Mode Toggle Button */}
             <button
               onClick={toggleDarkMode}
